@@ -16,7 +16,6 @@ Define the first-stage randomization probability in favor of intervention option
 See other details in the paper. In the paper, A is same as "a", B is same as "ac", P is same as "p", C is same as "v", and D is same as "m".
 
 Structure of SMART 3 arm trial:
-
                  Responder ------> A
        1. A -->  Nonresponder ---> C --> d1 (AC)
                  Nonresponder ---> D --> d2 (AD)
