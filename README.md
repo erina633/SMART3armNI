@@ -15,8 +15,18 @@ We assume a single continuous primary outcome Y observed at the end of the trial
 Define the first-stage randomization probability in favor of intervention option T_1 as pi_{T_1} and the second-stage randomization probability for those who started with the first-stage option T_1, in favor of intervention option T_2 as pi_{T_1T_2}. Note that, pi_{P} = 1 - pi_{A} - pi_{B}, pi_{AD} = 1 - pi_{AC}, and pi_{BD} = 1 - pi_{BC}.
 See other details in the paper. In the paper, A is same as "a", B is same as "ac", P is same as "p", C is same as "v", and D is same as "m".
 
+Structure of SMART 3 arm trial:
 
-We give brief description of the R files below:
+#                 Responder ------> A
+#       1. A -->  Nonresponder ---> C --> d1 (AC)
+#                 Nonresponder ---> D --> d2 (AD)
+# R --> 2. P ---------------------> P --> d5 (PP)
+#                 Responder ------> B
+#       3. B -->  Nonresponder ---> C --> d3 (BC)
+#                 Nonresponder ---> D --> d4 (BD)
+
+
+We give a brief description of the R files below:
 
 1. data_smart3arm: 
 
