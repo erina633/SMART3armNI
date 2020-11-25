@@ -157,7 +157,7 @@ data_smart3arm(N_val, alpha_val, beta_val, sig2E, sig2R, sig2P, theta_val, pi_A,
 
 2. power_curve:
 
-It calculates the empirical power of two stage SMART design for three arm non-ineriority trial for predefined sample size.
+It draws the power curve of two stage SMART design for three arm non-ineriority trial for predefined sample size.
 
 Input:
 
@@ -181,7 +181,7 @@ sig2P: variance corresponding to placebo treatment sequence.
 
 theta_val: non-inferiority margin, [0.5, 1).
 
-pi_AL: probability corresponding to arm A at first stage.
+pi_A: probability corresponding to arm A at first stage.
 
 pi_B: probability corresponding to arm B at first stage.
 
@@ -207,7 +207,7 @@ xi_0, xi_1A, xi_1B, xi_2AC, xi_2AD, xi_2BC, xi_2BD: coefficients of different tr
 
 Output:
 
-power_curve returns the power curve corresponding to specified values
+power_curve returns the power curve corresponding to specified values.
 
 Example:
 
@@ -307,15 +307,152 @@ plot(powercurve_dp[,1], powercurve_dp[,2], type = c("l"), col = 1:4, lwd = rep(2
 
 3. sample_power:
 
-
+sample_power calculates the sample size and estimates the empirical power of two stage SMART design for three arm non-ineriority trial.
 
 
 Input:
 
+M: number of simulated datasets.
+
+alpha_val: level of significance.
+
+beta_val: type II error.
+
+path: path options are: "DP" (distinct path), "SP" (shared path).
+
+seq_EPR: treatment sequnces of experimental (E), placebo (P), and reference (R) arms. If path = "DP", the options are: "d1d5d3", "d1d5d4", "d2d5d3", "d2d5d4"; if path = "SP", the options are: "d1d5d2", "d3d5d4".
+
+sig2E: variance corresponding to experimental treatment sequence.
+
+sig2R: variance corresponding to reference treatment sequence.
+
+sig2P: variance corresponding to placebo treatment sequence.
+
+theta_val: non-inferiority margin, [0.5, 1).
+
+pi_A: probability corresponding to arm A at first stage.
+
+pi_B: probability corresponding to arm B at first stage.
+
+pi_P: probability corresponding to arm P at first stage.
+
+gamma_A: response rate corresponding to A.
+
+gamma_B: response rate corresponding to B.
+
+pi_AC: probability corresponding to arm A at 1st stage and C at 2nd stage.
+
+pi_BC: probability corresponding to arm B at 1st stage and C at 2nd stage.
+
+mu_LA: mean of the latent variable corresponding to arm A.
+
+sig2_L: variance of the latent variable.
+
+mu_LP: mean of the latent variable corresponding to arm A.
+
+zeta_0, zeta_1A, zeta_1B, zeta_1P: coefficients of same treatment sequences at both stage.
+
+xi_0, xi_1A, xi_1B, xi_2AC, xi_2AD, xi_2BC, xi_2BD: coefficients of different treatment sequences.
 
 Output:
 
+sample_power returns a vector containing the following components:
+
+SES: standardized effect size;
+
+N: required sample size;
+
+power: empirical power.
 
 Example:
+
+##Specify the values
+
+M = 5000 #M datasets
+
+alpha_val = 0.05 #level alpha
+
+beta_val = 0.2 #type II error
+
+#Probabilitites
+
+pi_A = 1/3 #probability corresponding to arm A at first stage
+
+pi_B = 1/3 #probability corresponding to arm B at first stage
+
+pi_P = 1/3 #probability corresponding to arm P at first stage
+
+pi_AC = 1/2 #probability corresponding to arm A at 1st stage and C at 2nd stage
+
+pi_AD = 1 - pi_AC #probability corresponding to arm A at 1st stage and D at 2nd stage
+
+pi_BC = 1/2 #probability corresponding to arm B at 1st stage and C at 2nd stage
+
+pi_BD = 1 - pi_BC #probability corresponding to arm B at 1st stage and D at 2nd stage
+
+##Data generation parameters
+
+mu_LA = 2 #mean of the latent variable corresponding to arm A
+
+sig2_L = 0.2^2 #variance of the latent variable
+
+mu_LP = 2 #mean of the latent variable corresponding to arm A
+
+#parameters to calculate regimen means
+
+zeta_0 = 0.1
+
+zeta_1A = 2
+
+zeta_1B = 1.5
+
+zeta_1P = 0.1
+
+xi_0 = 0.03
+
+xi_1A = 0.1
+
+xi_1B = 0.6
+
+xi_2AC = 3.5
+
+xi_2AD = 0.1 #For path = "SP", use 0.01
+
+xi_2BC = 0.2
+
+xi_2BD = 0.5
+
+#Path: Options are "DP", "SP"
+
+path = "DP"
+
+#Sequences corresponding to DP: "d1d5d3", "d1d5d4", "d2d5d3", "d2d5d4"
+
+#Sequences corresponding to SP: "d1d5d2", "d3d5d4"
+
+seq_EPR = "d1d5d3"
+
+#equal variance
+
+sig2 = 10^2
+
+sig2E = sig2
+
+sig2R = sig2P = sig2
+
+#NI margin
+
+theta_val = 0.6
+
+#Response rates
+
+gamma_A = 0.4
+
+gamma_B = 0.3
+
+#Power and sample size
+
+sample_power(M, alpha_val, beta_val, path, seq_EPR, sig2E, sig2R, sig2P, theta_val, pi_A, pi_B, pi_P, gamma_A, gamma_B, pi_AC, pi_BC, mu_LA, sig2_L, mu_LP, zeta_0, zeta_1A,
+zeta_1B, zeta_1P, xi_0, xi_1A, xi_1B, xi_2AC, xi_2AD, xi_2BC, xi_2BD)
 
 
