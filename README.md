@@ -17,13 +17,13 @@ See other details in the paper. In the paper, A is same as "a", B is same as "ac
 
 Structure of SMART 3 arm trial:
 
-#                 Responder ------> A
-#       1. A -->  Nonresponder ---> C --> d1 (AC)
-#                 Nonresponder ---> D --> d2 (AD)
-# R --> 2. P ---------------------> P --> d5 (PP)
-#                 Responder ------> B
-#       3. B -->  Nonresponder ---> C --> d3 (BC)
-#                 Nonresponder ---> D --> d4 (BD)
+                 Responder ------> A
+       1. A -->  Nonresponder ---> C --> d1 (AC)
+                 Nonresponder ---> D --> d2 (AD)
+ R --> 2. P ---------------------> P --> d5 (PP)
+                 Responder ------> B
+       3. B -->  Nonresponder ---> C --> d3 (BC)
+                 Nonresponder ---> D --> d4 (BD)
 
 
 We give a brief description of the R files below:
