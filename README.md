@@ -1,4 +1,5 @@
-# SMART3armNI: R codes for SMART 3 arm NI trial.
+# SMART3armNI: 
+R codes for SMART 3 arm NI trial.
 
 The R codes are provided to (1) generate the data; (2) plot the power curves; (3) calculate the sample size and power. 
 
